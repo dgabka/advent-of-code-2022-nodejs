@@ -1,4 +1,4 @@
-const fs = require("fs/promises");
+const getInput = require("../utils/getInput");
 
 const opponentChoices = {
   A: 1,
@@ -12,26 +12,21 @@ const myChoices = {
   Z: 3,
 };
 
-async function getInput() {
-  const f = await fs.readFile("./input.txt", { encoding: "utf-8" });
-  return f
-    .trim()
-    .split("\n")
-    .map((x) => x.split(" "));
-}
-
 async function main() {
-  const input = await getInput();
-  const answer = input.reduce((previous, current) => {
-    const [opponent, me] = current;
+  const input = await getInput(__dirname);
+
+  const rounds = input.split("\n").map((x) => x.split(" "));
+
+  const answer = rounds.reduce((sum, round) => {
+    const [opponent, me] = round;
     const result = ((opponentChoices[opponent] - myChoices[me] + 3) % 3) + 1;
     switch (result) {
       case 2: // lose
-        return previous + myChoices[me];
+        return sum + myChoices[me];
       case 1: // draw
-        return previous + 3 + myChoices[me];
+        return sum + 3 + myChoices[me];
       case 3: // win
-        return previous + 6 + myChoices[me];
+        return sum + 6 + myChoices[me];
     }
   }, 0);
 

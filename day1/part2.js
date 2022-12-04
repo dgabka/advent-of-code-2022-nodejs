@@ -1,31 +1,21 @@
-const fs = require("fs/promises");
-
-async function getInput() {
-  const f = await fs.readFile("./input.txt", { encoding: "utf-8" });
-  return f
-    .trim()
-    .split("\n\n")
-    .map((x) => x.split("\n").map((y) => parseInt(y)));
-}
+const getInput = require("../utils/getInput");
 
 async function main() {
-  const input = await getInput();
-  const result = input
-    .map((curr) =>
-      curr.reduce((sum, fruit) => {
-        if (isNaN(fruit)) {
-          return sum;
-        }
-        return sum + parseInt(fruit);
-      }, 0)
+  const input = await getInput(__dirname);
+
+  const elves = input
+    .split("\n\n")
+    .map((x) => x.split("\n").map((y) => parseInt(y)));
+
+  const answer = elves
+    .map((food) =>
+      food.reduce((elfsCalories, snack) => elfsCalories + snack, 0)
     )
     .sort()
     .slice(-3)
-    .reduce((sum, curr) => {
-      sum += curr;
-      return sum;
-    }, 0);
-  console.log(result);
+    .reduce((sum, elfsCalories) => sum + elfsCalories, 0);
+
+  console.log(answer);
 }
 
 main();
