@@ -15,7 +15,10 @@ const myChoices = {
 async function main() {
   const input = await getInput(__dirname);
 
-  const rounds = input.split("\n").map((x) => x.split(" "));
+  const rounds = input
+    .trim()
+    .split("\n")
+    .map((x) => x.split(" "));
 
   const answer = rounds.reduce((sum, round) => {
     const [opponent, me] = round;

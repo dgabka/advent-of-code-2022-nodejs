@@ -4,6 +4,7 @@ async function main() {
   const input = await getInput(__dirname);
 
   const pairs = input
+    .trim()
     .split("\n")
     .map((pair) => pair.split(/-|,/g).map((id) => parseInt(id)));
 

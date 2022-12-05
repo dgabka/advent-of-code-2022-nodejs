@@ -17,6 +17,7 @@ async function main() {
   const input = await getInput(__dirname);
 
   const groups = input
+    .trim()
     .match(/(?:^\w*$\n?){3}/gm) // split into groups of three
     .map((s) => s.match(/(?:^\w+$)/gm)); // split each group
 

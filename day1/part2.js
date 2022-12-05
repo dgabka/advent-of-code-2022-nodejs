@@ -4,6 +4,7 @@ async function main() {
   const input = await getInput(__dirname);
 
   const elves = input
+    .trim()
     .split("\n\n")
     .map((x) => x.split("\n").map((y) => parseInt(y)));
 

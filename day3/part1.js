@@ -20,7 +20,7 @@ function getPriorityForItem(item) {
 async function main() {
   const input = await getInput(__dirname);
 
-  const rucksacks = input.split("\n");
+  const rucksacks = input.trim().split("\n");
 
   const answer = rucksacks.reduce((previous, current) => {
     const [compartmentA, compartmentB] = splitInHalf(current);
