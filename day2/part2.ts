@@ -1,4 +1,4 @@
-const getInput = require("../utils/getInput");
+import getInput from "../utils/getInput";
 
 const opponentChoices = {
   A: 1,
@@ -18,7 +18,9 @@ async function main() {
   const rounds = input
     .trim()
     .split("\n")
-    .map((x) => x.split(" "));
+    .map((x) => x.split(" ")) as Array<
+    [keyof typeof opponentChoices, keyof typeof results]
+  >;
 
   const answer = rounds.reduce((sum, round) => {
     const [opponent, result] = round;
@@ -32,6 +34,8 @@ async function main() {
         return sum + 3 + myChoice;
       case 3: // win
         return sum + 6 + myChoice;
+      default:
+        return sum;
     }
   }, 0);
 

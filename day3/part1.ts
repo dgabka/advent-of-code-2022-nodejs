@@ -1,6 +1,6 @@
-const getInput = require("../utils/getInput");
+import getInput from "../utils/getInput";
 
-function splitInHalf(str) {
+function splitInHalf(str: string) {
   return [str.slice(0, str.length / 2), str.slice(str.length / 2)];
 }
 
@@ -8,7 +8,7 @@ const ASCII_LOWERCASE_RANGE_START = 97;
 const ASCII_PRIORITY_LOWERCASE_OFFSET = 96;
 const ASCII_PRIORITY_UPPERCASE_OFFSET = 38;
 
-function getPriorityForItem(item) {
+function getPriorityForItem(item: string) {
   const ascii = item.charCodeAt(0);
   if (ascii >= ASCII_LOWERCASE_RANGE_START) {
     return ascii - ASCII_PRIORITY_LOWERCASE_OFFSET;
@@ -26,7 +26,7 @@ async function main() {
     const [compartmentA, compartmentB] = splitInHalf(current);
     const item = compartmentA
       .split("")
-      .find((letter) => compartmentB.includes(letter));
+      .find((letter) => compartmentB.includes(letter))!;
     return previous + getPriorityForItem(item);
   }, 0);
 

@@ -1,4 +1,4 @@
-const getInput = require("../utils/getInput");
+import getInput from "../utils/getInput";
 
 async function main() {
   const input = await getInput(__dirname);
@@ -6,7 +6,7 @@ async function main() {
   const elves = input
     .trim()
     .split("\n\n")
-    .map((x) => x.split("\n").map((y) => parseInt(y)));
+    .map((x: string) => x.split("\n").map((y) => parseInt(y)));
 
   const answer = elves
     .map((food) =>
