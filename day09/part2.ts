@@ -1,4 +1,4 @@
-import getInput from "../utils/getInput";
+import getInput from '../utils/getInput';
 
 type coords = { x: number; y: number };
 
@@ -18,8 +18,8 @@ async function main() {
 
   const moves = input
     .trim()
-    .split("\n")
-    .map((move) => move.split(" "));
+    .split('\n')
+    .map((move) => move.split(' '));
 
   const head: coords = { x: 0, y: 0 };
   const knots: Array<coords> = new Array(9).fill(0).map(() => ({ ...head }));
@@ -29,16 +29,16 @@ async function main() {
   moves.forEach(([direction, steps]) => {
     for (let i = 0; i < parseInt(steps); i++) {
       switch (direction) {
-        case "D":
+        case 'D':
           head.y--;
           break;
-        case "U":
+        case 'U':
           head.y++;
           break;
-        case "L":
+        case 'L':
           head.x--;
           break;
-        case "R":
+        case 'R':
           head.x++;
       }
 

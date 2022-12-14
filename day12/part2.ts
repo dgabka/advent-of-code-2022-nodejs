@@ -1,4 +1,4 @@
-import getInput from "../utils/getInput";
+import getInput from '../utils/getInput';
 
 type Point = {
   x: number;
@@ -35,10 +35,10 @@ class Grid {
 
     let char = this.data[y][x];
 
-    if (char === "E") {
-      char = "z";
-    } else if (char === "S") {
-      char = "a";
+    if (char === 'E') {
+      char = 'z';
+    } else if (char === 'S') {
+      char = 'a';
     }
 
     return char.charCodeAt(0);
@@ -53,7 +53,7 @@ class Grid {
       }
     }
 
-    throw new Error("Character not found in grid");
+    throw new Error('Character not found in grid');
   }
 }
 
@@ -61,7 +61,7 @@ function bfs(grid: Grid, start: Point) {
   const queue: Vertex[] = [
     { p: start, distance: 0, key: JSON.stringify(start) },
   ];
-  const visited: Set<Vertex["key"]> = new Set();
+  const visited: Set<Vertex['key']> = new Set();
 
   let v: Vertex | undefined;
   while ((v = queue.shift()) !== undefined) {
@@ -103,11 +103,11 @@ async function main() {
   const grid = new Grid(
     input
       .trim()
-      .split("\n")
-      .map((row) => row.trim().split(""))
+      .split('\n')
+      .map((row) => row.trim().split(''))
   );
 
-  let start: Point = grid.find("E");
+  let start: Point = grid.find('E');
 
   console.log(bfs(grid, start));
 }

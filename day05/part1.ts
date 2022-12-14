@@ -1,4 +1,4 @@
-import getInput from "../utils/getInput";
+import getInput from '../utils/getInput';
 
 function transpose(matrix: string[][]): string[][] {
   return matrix.reduceRight(
@@ -10,7 +10,7 @@ function transpose(matrix: string[][]): string[][] {
 async function main() {
   const input = await getInput(__dirname);
 
-  const inputLines = input.split("\n");
+  const inputLines = input.split('\n');
   const crates = transpose(
     inputLines.slice(0, 8).map((line) =>
       line
@@ -29,7 +29,7 @@ async function main() {
     }
   });
 
-  const answer = crates.map((stack) => stack[stack.length - 1]).join("");
+  const answer = crates.map((stack) => stack[stack.length - 1]).join('');
 
   console.log(answer);
 }

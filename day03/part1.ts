@@ -1,4 +1,4 @@
-import getInput from "../utils/getInput";
+import getInput from '../utils/getInput';
 
 function splitInHalf(str: string) {
   return [str.slice(0, str.length / 2), str.slice(str.length / 2)];
@@ -20,12 +20,12 @@ function getPriorityForItem(item: string) {
 async function main() {
   const input = await getInput(__dirname);
 
-  const rucksacks = input.trim().split("\n");
+  const rucksacks = input.trim().split('\n');
 
   const answer = rucksacks.reduce((previous, current) => {
     const [compartmentA, compartmentB] = splitInHalf(current);
     const item = compartmentA
-      .split("")
+      .split('')
       .find((letter) => compartmentB.includes(letter))!;
     return previous + getPriorityForItem(item);
   }, 0);

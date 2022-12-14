@@ -1,4 +1,4 @@
-import getInput from "../utils/getInput";
+import getInput from '../utils/getInput';
 
 const gcd = (a: number, b: number): number => (b == 0 ? a : gcd(b, a % b));
 const lcm = (a: number, b: number): number => (a / gcd(a, b)) * b;
@@ -15,10 +15,10 @@ class Monkey {
   private _lcm: number = 0;
 
   constructor(description: string) {
-    const lines = description.split("\n");
+    const lines = description.split('\n');
     this._index = parseInt(lines[0].match(/\d+/g)![0]);
     this._items = lines[1].match(/\d+/g)!.map((i) => parseInt(i));
-    this._operation = lines[2].split(" = ").pop()!;
+    this._operation = lines[2].split(' = ').pop()!;
     this._testFactor = parseInt(lines[3].match(/\d+/g)![0]);
     this._testPassedTarget = parseInt(lines[4].match(/\d+/g)![0]);
     this._testFailedTarget = parseInt(lines[5].match(/\d+/g)![0]);
@@ -73,7 +73,7 @@ async function main() {
 
   const monkeys = input
     .trim()
-    .split("\n\n")
+    .split('\n\n')
     .map((s) => new Monkey(s));
 
   const leastCommonMultiple = lcmAll(monkeys.map((m) => m.testFactor));

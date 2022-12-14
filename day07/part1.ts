@@ -1,4 +1,4 @@
-import getInput from "../utils/getInput";
+import getInput from '../utils/getInput';
 
 class TreeNode {
   name: string;
@@ -17,7 +17,7 @@ class TreeNode {
 }
 
 let root: TreeNode = {
-  name: "/",
+  name: '/',
   size: 0,
   files: [],
   dirs: [],
@@ -33,18 +33,18 @@ function sumSize(node: TreeNode): number {
 
 async function main() {
   const input = await getInput(__dirname);
-  const output = input.trim().split("\n").slice(2);
+  const output = input.trim().split('\n').slice(2);
 
   let currentNode = root;
 
   output.forEach((line) => {
     if (/^dir.*/.test(line)) {
-      const [_, name] = line.split(" ");
+      const [_, name] = line.split(' ');
       if (name) {
         currentNode.dirs.push(new TreeNode(name, currentNode));
       }
     } else if (/^\d+/.test(line)) {
-      const [size] = line.split(" ");
+      const [size] = line.split(' ');
       if (size) {
         currentNode.size += parseInt(size);
         let tmp = currentNode.parent;
@@ -54,8 +54,8 @@ async function main() {
         }
       }
     } else if (/^\$ cd/.test(line)) {
-      const [_, __, dir] = line.split(" ");
-      if (dir === "..") {
+      const [_, __, dir] = line.split(' ');
+      if (dir === '..') {
         currentNode = currentNode.parent as TreeNode;
       } else {
         currentNode = currentNode.dirs.find(({ name }) => name === dir)!;

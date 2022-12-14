@@ -1,11 +1,11 @@
-import getInput from "../utils/getInput";
+import getInput from '../utils/getInput';
 
 async function main() {
   const input = await getInput(__dirname);
 
   const pairs = input
     .trim()
-    .split("\n")
+    .split('\n')
     .map((pair) => pair.split(/-|,/g).map((id) => parseInt(id)));
 
   const answer = pairs.reduce((sum, ids) => {

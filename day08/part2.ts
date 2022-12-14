@@ -1,12 +1,12 @@
-import getInput from "../utils/getInput";
+import getInput from '../utils/getInput';
 
 async function main() {
   const input = await getInput(__dirname);
 
   const grid = input
     .trim()
-    .split("\n")
-    .map((row: string) => row.split("").map((x) => parseInt(x)));
+    .split('\n')
+    .map((row: string) => row.split('').map((x) => parseInt(x)));
 
   let answer = 0;
 

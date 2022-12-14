@@ -1,12 +1,12 @@
-import getInput from "../utils/getInput";
+import getInput from '../utils/getInput';
 
 async function main() {
   const input = await getInput(__dirname);
 
   const elves = input
     .trim()
-    .split("\n\n")
-    .map((x) => x.split("\n").map((y) => parseInt(y)));
+    .split('\n\n')
+    .map((x) => x.split('\n').map((y) => parseInt(y)));
 
   const answer = elves.reduce((mostCalories, food) => {
     const elfSum = food.reduce((sum, snack) => sum + snack, 0);

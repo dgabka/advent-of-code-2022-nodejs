@@ -1,4 +1,4 @@
-import getInput from "../utils/getInput";
+import getInput from '../utils/getInput';
 
 const opponentChoices = {
   A: 1,
@@ -17,8 +17,8 @@ async function main() {
 
   const rounds = input
     .trim()
-    .split("\n")
-    .map((x) => x.split(" ")) as Array<
+    .split('\n')
+    .map((x) => x.split(' ')) as Array<
     [keyof typeof opponentChoices, keyof typeof results]
   >;
 

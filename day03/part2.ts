@@ -1,4 +1,4 @@
-import getInput from "../utils/getInput";
+import getInput from '../utils/getInput';
 
 const ASCII_LOWERCASE_RANGE_START = 97;
 const ASCII_PRIORITY_LOWERCASE_OFFSET = 96;
